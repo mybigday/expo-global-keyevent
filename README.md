@@ -1,6 +1,6 @@
-[![CI Status](https://github.com/mybigday/react-native-global-keyevent/workflows/CI/badge.svg)](https://github.com/mybigday/react-native-global-keyevent)
+[![CI Status](https://github.com/mybigday/expo-global-keyevent/workflows/CI/badge.svg)](https://github.com/mybigday/expo-global-keyevent)
 
-> React Native module for listen global key event
+> Expo wrapper for react-native-global-keyevent
 
 ## Introdution
 
@@ -21,80 +21,9 @@ GlobalKeyEvent.addKeyUpListener((evt) => {
 })
 ```
 
-[Example](example/App.js)
-
 ## Installation
 
-- Add dependency with `yarn add react-native-global-keyevent`
-- You may need to run `react-native link react-native-global-keyevent` or autolinking.
-
-### iOS / tvOS
-
-This module required to replace root view controller:
-
-```patch
---- AppDelegate.m	2022-02-09 07:32:28.000000000 +0800
-+++ AppDelegate.m	2022-02-09 07:31:53.000000000 +0800
-@@ -3,6 +3,7 @@
- #import <React/RCTBridge.h>
- #import <React/RCTBundleURLProvider.h>
- #import <React/RCTRootView.h>
-+#import "RNGlobalKeyEventViewController.h"
- 
- #ifdef FB_SONARKIT_ENABLED
- #import <FlipperKit/FlipperClient.h>
-@@ -43,7 +44,7 @@
-   }
- 
-   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
--  UIViewController *rootViewController = [UIViewController new];
-+  UIViewController *rootViewController = [RNGlobalKeyEventViewController new];
-   rootViewController.view = rootView;
-   self.window.rootViewController = rootViewController;
-   [self.window makeKeyAndVisible];
-
-```
-
-If you have own custom root view controller, you can follow [`ios/RNGlobalKeyEventViewController.m`](ios/RNGlobalKeyEventViewController.m).
-
-It's also supported iOS / tvOS version less than 13.4, but it only supports `keyUp` event.
-
-### Android
-
-This module required to listen key event on MainActivity:
-
-```patch
---- MainActivity.java 2022-02-03 09:01:32.000000000 +0800
-+++ MainActivity.java 2022-02-03 09:01:32.000000000 +0800
-@@ -1,6 +1,8 @@
- package com.example;
- 
- import com.facebook.react.ReactActivity;
-+import android.view.KeyEvent;
-+import com.globalkeyevent.GlobalKeyEventModule;
- 
- public class MainActivity extends ReactActivity {
- 
-@@ -12,4 +14,18 @@
-   protected String getMainComponentName() {
-     return "example";
-   }
-+
-+  @Override
-+  public boolean onKeyDown(int keyCode, KeyEvent event) {
-+    GlobalKeyEventModule instance = GlobalKeyEventModule.getInstance();
-+    if (instance != null) instance.onKeyDownEvent(keyCode, event);
-+    return super.onKeyDown(keyCode, event);
-+  }
-+
-+  @Override
-+  public boolean onKeyUp(int keyCode, KeyEvent event) {
-+    GlobalKeyEventModule instance = GlobalKeyEventModule.getInstance();
-+    if (instance != null) instance.onKeyUpEvent(keyCode, event);
-+    return super.onKeyUp(keyCode, event);
-+  }
- }
-```
+- Add dependency with `yarn add react-native-global-keyevent expo-global-keyevent`
 
 ## Usage
 

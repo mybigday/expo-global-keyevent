@@ -1,0 +1,7 @@
+{
+  "name": "expo-global-keyevent",
+  "platforms": ["ios", "android"],
+  "ios": {
+    "reactDelegateHandlers": ["GlobalKeyeventReactDelegateHandler"]
+  }
+}

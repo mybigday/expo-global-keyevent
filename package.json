@@ -1,11 +1,12 @@
 {
-  "name": "react-native-global-keyevent",
+  "name": "expo-global-keyevent",
   "version": "0.1.3",
-  "description": "React Native module for listen global key event",
+  "description": "Expo module for listen global key event",
   "author": "Jhen-Jie Hong <developer@jhen.me>",
-  "homepage": "https://github.com/mybigday/react-native-global-keyevent",
-  "repository": "https://github.com/mybigday/react-native-global-keyevent",
+  "homepage": "https://github.com/mybigday/expo-global-keyevent",
+  "repository": "https://github.com/mybigday/expo-global-keyevent",
   "keywords": [
+    "expo",
     "react-native",
     "native-module",
     "keyevent",
@@ -14,15 +15,12 @@
   ],
   "license": "MIT",
   "main": "src/index.js",
-  "scripts": {
-    "lint": "eslint ."
-  },
+  "scripts": {},
   "devDependencies": {
-    "@babel/core": "^7.16.12",
-    "@babel/runtime": "^7.16.7",
-    "@fugood/eslint-config-react": "^0.4.0",
-    "eslint": "^7.0.0",
-    "lerna": "^4.0.0",
-    "metro-react-native-babel-preset": "^0.67.0"
+    "expo-module-scripts": "^3.0.0"
+  },
+  "peerDependencies": {
+    "expo": "*",
+    "react-native-global-keyevent": "*"
   }
 }
